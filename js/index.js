@@ -6,7 +6,6 @@ const ticTacToeGame = ((documentObject) => {
   class TicTacToe {
 
     constructor(gameHolderId) {
-      // debugger;
       this.firstPlayer = true;
       this.gameHolder = documentObject.getElementById('game-holder');
       this.clickHandler = (ev) => {
@@ -107,4 +106,4 @@ ticTacToeGame.start();
 
 resetButton.addEventListener('click', (ev) => {
   ticTacToeGame.restart();
-})
+});
