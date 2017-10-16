@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 95vh;
+  position: relative;
+  text-align: center;
+}
+
+h1 {
+  color: #00AAE5;
+  font-family: 'Ultra', serif;
+  font-size:
+}
+
+.container {
+  border: 1rem solid #443bb9;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38%;
+}
+
+.reset-button {
+  color: white;
+  font-family: 'Roboto Mono';
+  background: #443bb9;
+  border: none;
+  padding: 1em;
+  margin: 2em auto;
+}
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 300px;
+  min-height: 300px;
+}
+
+.game-container .squared {
+  align-items: center;
+  border: 1px solid #00AAE5;
+  color: #443bb9;
+  display: flex;
+  font-family: 'Roboto Mono';
+  font-size: 4em;
+  height: 100px;
+  justify-content: center;
+  max-width: 300px;
+  position: relative;
+  width: 33%;
+}
+
+
+  .game-container .squared.diagonal-left:before,
+  .game-container .squared.diagonal-right:before {
+    background: red;
+    bottom: 48px;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: -23px;
+    width: 142px;
+  }
+
+  .game-container .squared.diagonal-right:before {
+    transform: rotate(-45deg);
+  }
+
+  .game-container .squared.diagonal-left:before {
+    transform: rotate(45deg);
+  }
+
+  .game-container .squared.horizontal:before {
+    background: red;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .game-container .squared.vertical:before {
+    background: red;
+    content: "";
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .game-container .squared:first-child,
+  .game-container .squared:nth-child(4),
+  .game-container .squared:nth-child(7) {
+    border-left: 0px;
+  }
+
+  .game-container .squared:nth-child(3),
+  .game-container .squared:nth-child(6),
+  .game-container .squared:nth-child(9) {
+    border-right: 0px;
+  }
+
+
+  .game-container .squared:nth-child(-n+3) {
+    border-top: 0px;
+  }
+
+  .game-container .squared:nth-child(n+7) {
+    border-bottom: 0px;
+  }
