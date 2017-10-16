@@ -38,9 +38,9 @@ const ticTacToeGame = ((documentObject) => {
     */
     _checkDiagonal(array) {
       if ((array[0] === array[4]) && (array[0] === array[8]) && array[0] !== "") {
-        this.endGame();
+        this._endGame();
       } else if ((array[2] === array[4]) && (array[2] === array[6]) && array[2] !== "") {
-        this.endGame();
+        this._endGame();
       }
     }
 
@@ -53,7 +53,7 @@ const ticTacToeGame = ((documentObject) => {
       let i = 2;
       while (i < array.length) {
         if (array[i] === array[i - 1] && array[i] === array[i - 2] && array[i] !== "") {
-          this.endGame();
+          this._endGame();
         }
         i += 3;
       }
@@ -67,7 +67,7 @@ const ticTacToeGame = ((documentObject) => {
     _checkColumns(array) {
       for (var i = 0; i < 3; i++) {
         if (array[i] === array[i + 3] && array[i] === array[i + 6] && array[i] !== "") {
-          this.endGame();
+          this._endGame();
         }
       }
     }
@@ -108,11 +108,11 @@ const ticTacToeGame = ((documentObject) => {
     }
 
     /**
-     * bindClickEvent <private>.
+     * _bindClickEvent <private>.
      * Check all rows for possible same value squares
      * @function
     */
-    bindClickEvent() {
+    _bindClickEvent() {
       this.gameHolder.addEventListener('click', this.clickHandler);
     }
 
@@ -130,11 +130,11 @@ const ticTacToeGame = ((documentObject) => {
     }
 
     /**
-     * endGame.
+     * _endGame.
      * Stop receiving user clicks.
      * @function
     */
-    endGame() {
+    _endGame() {
       this.gameHolder.removeEventListener('click', this.clickHandler);
     }
 
@@ -145,7 +145,7 @@ const ticTacToeGame = ((documentObject) => {
     */
     start() {
       this._createSquares();
-      this.bindClickEvent();
+      this._bindClickEvent();
     }
 
     /**
