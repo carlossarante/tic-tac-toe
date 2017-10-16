@@ -1,10 +1,24 @@
 "use-strict";
 
+
+/**
+ * ticTacToeGame.
+ * Instantiate the game.
+ * @function
+*/
 const ticTacToeGame = ((documentObject) => {
 
-
+  /**
+   * Tic Tac Toe Class.
+   * @class
+  */
   class TicTacToe {
 
+
+    /**
+     * Class constructor.
+     * @function
+    */
     constructor(gameHolderId) {
       this.firstPlayer = true;
       this.gameHolder = documentObject.getElementById('game-holder');
@@ -17,6 +31,11 @@ const ticTacToeGame = ((documentObject) => {
       };
     }
 
+    /**
+     * _checkDiagonal <private>.
+     * Check if all squares in diagonal have the same value
+     * @function
+    */
     _checkDiagonal(array) {
       if ((array[0] === array[4]) && (array[0] === array[8]) && array[0] !== "") {
         this.endGame();
@@ -25,6 +44,11 @@ const ticTacToeGame = ((documentObject) => {
       }
     }
 
+    /**
+     * _checkRows <private>.
+     * Check all rows for possible same value squares
+     * @function
+    */
     _checkRows(array) {
       let i = 2;
       while (i < array.length) {
@@ -35,6 +59,11 @@ const ticTacToeGame = ((documentObject) => {
       }
     }
 
+    /**
+     * _checkColumns <private>.
+     * Check all columns for possible same value squares
+     * @function
+    */
     _checkColumns(array) {
       for (var i = 0; i < 3; i++) {
         if (array[i] === array[i + 3] && array[i] === array[i + 6] && array[i] !== "") {
@@ -43,12 +72,22 @@ const ticTacToeGame = ((documentObject) => {
       }
     }
 
+    /**
+     * _checkRows <private>.
+     * Implement verification for all possible wins.
+     * @function
+    */
     verifyWinning(array) {
       this._checkColumns(array);
       this._checkRows(array);
       this._checkDiagonal(array);
     }
 
+    /**
+     * _check <private>.
+     * Event handler, verifies at all times for possible final moves.
+     * @function
+    */
     _check(target) {
       const values = [];
       const squares = this.gameHolder.querySelectorAll('.squared');
@@ -59,14 +98,29 @@ const ticTacToeGame = ((documentObject) => {
       this.verifyWinning(values);
     }
 
+    /**
+     * _getPlayerSign <private>.
+     * Alternates the player sign.
+     * @function
+    */
     _getPlayerSign() {
       return this.firstPlayer ? "X" : "O";
     }
 
+    /**
+     * bindClickEvent <private>.
+     * Check all rows for possible same value squares
+     * @function
+    */
     bindClickEvent() {
       this.gameHolder.addEventListener('click', this.clickHandler);
     }
 
+    /**
+     * _createSquares <private>.
+     * Insert all the squares on the game container.
+     * @function
+    */
     _createSquares() {
       for (var i = 0; i < 9; i++) {
         let div = documentObject.createElement('div');
@@ -75,15 +129,30 @@ const ticTacToeGame = ((documentObject) => {
       }
     }
 
+    /**
+     * endGame.
+     * Stop receiving user clicks.
+     * @function
+    */
     endGame() {
       this.gameHolder.removeEventListener('click', this.clickHandler);
     }
 
+    /**
+     * start.
+     * Initialize the game.
+     * @function
+    */
     start() {
       this._createSquares();
       this.bindClickEvent();
     }
 
+    /**
+     * start.
+     * Restart the game.
+     * @function
+    */
     restart() {
       this.gameHolder.removeEventListener('click', this.clickHandler);
       while(this.gameHolder.firstChild) {
